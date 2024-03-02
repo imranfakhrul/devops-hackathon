@@ -6,42 +6,43 @@ services:
       context: ./service_one
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
-    depends_on:
-      - mongodb
-      - redis
-      - mysql
+      - "8080:8080"
+    # depends_on:
+      # - mongodb
+    #   - redis
+    #   - mysql
 
   service_two:
     build:
       context: ./service_two
       dockerfile: Dockerfile
     ports:
-      - "4001:4001"
+      - "4007:4007"
     depends_on:
-      - mongodb
-      - redis
-      - mysql
+      - service_one
+      # - mongodb
+      # - redis
+      # - mysql
 
-  mysql:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-      MYSQL_DATABASE: usersql
-    # volumes:
-    #   - ./mysql_data:/var/lib/mysql
+  # mysql:
+  #   image: mysql:latest
+  #   restart: always
+  #   environment:
+  #     MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+  #     MYSQL_DATABASE: usersql
+  #   # volumes:
+  #   #   - ./mysql_data:/var/lib/mysql
 
-  mongodb:
-    image: mongo:latest
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example_password
-    # volumes:
-    #   - ./mongodb_data:/data/db
+  # mongodb:
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example_password
+  #   # volumes:
+  #   #   - ./mongodb_data:/data/db
 
-  redis:
-    image: redis:latest
-    restart: always
-    command: ["redis-server", "--requirepass", ""]
+  # redis:
+  #   image: redis:latest
+  #   restart: always
+  #   command: ["redis-server", "--requirepass", ""]

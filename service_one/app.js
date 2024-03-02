@@ -1,19 +1,23 @@
 const express = require('express');
 const app = express();
-const PORT = 4005
+const PORT = 8080
 
 app.get('/feed', async (req, res) => {
     // create traceid
     // create parent span
     // propagate traceid to service two
-    const response = await fetch('http://localhost:4007/')
-    const data = await response.json()
+    try {
+        const response = await fetch('http://localhost:4007/')
+        const data = await response.json()
+        res.json(data)
+    }catch (err) { 
+        console.log(err)
+    }
 
-    res.json(data)
 });
 
 app.get('/',(req,res) =>{
-    res.json({mess:"hello ismail"})
+    res.json({mess:"Hello, world!"})
 })
 
 app.listen(PORT, ()=>{
