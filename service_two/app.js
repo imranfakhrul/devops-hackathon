@@ -3,7 +3,7 @@ const User = require('./models/userModal');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = 4004
+const PORT = 4007
 
 // MongoDB setup
 mongoose.connect('mongodb://root:example_password@mongodb:27017/test', {
@@ -38,10 +38,12 @@ app.get('/create-user', async (req, res) => {
 
 
 app.get('/', (req, res) => {
+    // capture traceid from service one
+    // create span
     res.json({
-        message: 'Hello World!'
+        message: 'Hello juijiWorld!'
     })
-    res.send("Welcome to Backend Server 2");
+    // res.send("Welcome to Backend Server 2");
 });
 
 app.listen(PORT, () => {

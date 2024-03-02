@@ -1,12 +1,21 @@
 const express = require('express');
 const app = express();
+const PORT = 4005
 
 app.get('/feed', async (req, res) => {
-    const res = await fetch('http://localhost:4004/')
+    // create traceid
+    // create parent span
+    // propagate traceid to service two
+    const response = await fetch('http://localhost:4007/')
+    const data = await response.json()
 
-    res.json(res)
+    res.json(data)
 });
 
-app.listen(4000, ()=>{
-    console.log("listening to post 4000");
+app.get('/',(req,res) =>{
+    res.json({mess:"hello ismail"})
+})
+
+app.listen(PORT, ()=>{
+    console.log(`listening to post${PORT}`);
 });
