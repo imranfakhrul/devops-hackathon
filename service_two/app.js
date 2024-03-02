@@ -1,7 +1,7 @@
 import express from "express";
 import configureOpenTelemetry from "./tracing.js"; // Assuming tracing.js is the correct filename and extension
 import User from './models/userModal.js';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import { trace, context, propagation } from "@opentelemetry/api";
 
 const app = express();
@@ -41,32 +41,32 @@ app.get("/validateuser", (req, res) => {
   });
 
 // API endpoint to check MongoDB
-app.get('/check-mongo', (req, res) => {
-    res.send('MongoDB is connected');
-});
+// app.get('/check-mongo', (req, res) => {
+//     res.send('MongoDB is connected');
+// });
 
 // Sample route to create a user
-app.get('/create-user', async (req, res) => {
-    try {
-        const user = new User({
-            username: 'example_user',
-            email: 'user@example.com',
-            password: 'password123'
-        });
-        const savedUser = await user.save();
-        res.send('User created successfully: ' + savedUser);
-    } catch (error) {
-        console.error('Failed to create user', error);
-        res.status(500).send('Failed to create user: ' + error.message);
-    }
-});
+// app.get('/create-user', async (req, res) => {
+//     try {
+//         const user = new User({
+//             username: 'example_user',
+//             email: 'user@example.com',
+//             password: 'password123'
+//         });
+//         const savedUser = await user.save();
+//         res.send('User created successfully: ' + savedUser);
+//     } catch (error) {
+//         console.error('Failed to create user', error);
+//         res.status(500).send('Failed to create user: ' + error.message);
+//     }
+// });
 
 
 app.get('/', (req, res) => {
     // capture traceid from service one
     // create span
     res.json({
-        message: 'Hello juijiWorld!'
+        message: 'Hello World!'
     })
     // res.send("Welcome to Backend Server 2");
 });

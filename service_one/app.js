@@ -5,7 +5,7 @@ import configureOpenTelemetry from "./tracing.js"; // Assuming `tracing.js` is t
 
 
 const app = express();
-const PORT = 4005
+const PORT = 8080
 
 const tracerProvider = configureOpenTelemetry("start");
 
@@ -28,8 +28,8 @@ app.get('/feed', async (req, res) => {
     // create parent span
     try{
         // need user info
-        // const response = await fetch('http://localhost:4007/')
-        // const data = await response.json()
+        const response = await fetch('http://localhost:4007/')
+        const data = await response.json()
 
         // if (parentSpan) {
         //     parentSpan.setAttribute("user.id", user.id);
@@ -46,7 +46,7 @@ app.get('/feed', async (req, res) => {
           propagation.inject(context.active(), carrier);
   
           // Make the HTTP request with the injected context in headers
-          return axios.get("http://localhost:4700/validateuser", {
+          return axios.get("http://localhost:4007/validateuser", {
             headers: carrier,
           });
         }

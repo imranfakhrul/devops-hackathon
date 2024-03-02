@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose port 4000 (or whichever port your Express.js app listens on)
-EXPOSE 4000
+EXPOSE 8080
 
 # Command to run the application
 CMD ["node", "app.js"]
