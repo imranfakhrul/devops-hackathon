@@ -1,0 +1,10 @@
+### This is a GET request
+GET http://localhost:4000/trigger
+
+### This is a POST request
+POST http://localhost:4001/backend_server_2
+Content-Type: application/json
+
+{
+    "key": "value"
+}
