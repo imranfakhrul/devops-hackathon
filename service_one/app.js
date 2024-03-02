@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send("Welcome to Backend Server 1");
+app.get('/feed', async (req, res) => {
+    const res = await fetch('http://localhost:4004/')
+
+    res.json(res)
 });
 
 app.listen(4000, ()=>{

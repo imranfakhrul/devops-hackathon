@@ -38,6 +38,9 @@ app.get('/create-user', async (req, res) => {
 
 
 app.get('/', (req, res) => {
+    res.json({
+        message: 'Hello World!'
+    })
     res.send("Welcome to Backend Server 2");
 });
 
