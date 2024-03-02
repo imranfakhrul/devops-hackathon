@@ -11,7 +11,7 @@ const app = express();
 const PORT = 4007;
 
 // MongoDB setup
-mongoose.connect('http://localhost:27017/test', {
+mongoose.connect('mongodb://localhost:27017/test', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
